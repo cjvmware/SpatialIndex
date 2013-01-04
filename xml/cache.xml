@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE cache PUBLIC
+    "-//GemStone Systems, Inc.//GemFire Declarative Caching 7.0//EN"
+    "http://www.gemstone.com/dtd/cache7_0.dtd">
+
+<cache>
+
+	<region name="MyData">
+		<region-attributes refid="PARTITION">
+		
+  			<partition-attributes redundant-copies="1">
+     			<partition-listener>
+         			<class-name>com.vmware.gemfire.example.spatial.listener.QuadTreePartitionListener</class-name>        
+     			</partition-listener>
+ 			</partition-attributes>
+ 			
+ 			<cache-listener>
+    			<class-name>com.vmware.gemfire.example.spatial.listener.QuadTreeCacheListener</class-name>
+  			</cache-listener>
+  			
+		</region-attributes>	
+	</region>
+	
+	<function-service>
+	
+  		<function>
+    		<class-name>com.vmware.gemfire.example.spatial.function.SinglePointGetFunction</class-name>
+  		</function>
+  		
+  		<function>
+    		<class-name>com.vmware.gemfire.example.spatial.function.BoundingBoxGetFunction</class-name>
+  		</function>
+  		
+	</function-service>
+	
+</cache>
